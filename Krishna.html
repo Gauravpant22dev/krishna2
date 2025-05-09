@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Krishna Motivation</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #98fbcb;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: linear-gradient(to bottom right, #e0f7fa, #ffe0f7);
+      background-image: url('pexels-pixabay-36744(1).jpg'); /* Add a soft Krishna-related background */
+      background-size: 2000px;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #2e2e2e;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+    margin-bottom: 1rem;
+    color: #4b0082;
+    text-shadow: 1px 1px 2px #ffffffaa;
+  }
+
+  input {
+    padding: 0.7rem;
+    width: 280px;
+    border: 2px solid #a020f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #a020f044;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input:focus {
+    box-shadow: 0 0 15px #8a2be2aa;
+    border-color: #8a2be2;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: #7b1fa2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    background-color: #9c27b0;
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 300px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: floatImage 6s ease-in-out infinite;
+  }
+
+  @keyframes floatImage {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  #result h2 {
+    font-size: 1.5rem;
+    color: #6a1b9a;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+    
+    input {
+      padding: 0.5rem;
+      width: 250px;
+      margin-top: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    img {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tell me about your mood</h1>
+  <input type="text" id="moodInput" placeholder="e.g., happy, sad, angry...">
+  <br>
+  <button onclick="getKrishnaWisdom()">Get Krishna's Wisdom</button>
+
+  <div id="result" style="margin-top: 2rem;"></div>
+
+  <script>
+    const quotes = {
+      happy: "In happiness and distress, be steady, for both are temporary. — Lord Krishna",
+      sad: "Why do you worry without cause? Whom do you fear without reason? — Lord Krishna",
+      angry: "Calmness is the cradle of power. Anger clouds the mind. — Lord Krishna",
+      anxious: "Surrender fully to me, and I shall deliver you from all fears. — Lord Krishna",
+      default: "Do your duty, and do not concern yourself with the results. — Lord Krishna",
+    };
+    const krishnaImages = [
+      "krishna1.jpg",
+      "krishna2.jpg",
+      "krishna3.jpg",
+      "krishna4.jpg",
+      "krishna5.jpg",
+    ];
+    function getRandomImage() {
+      const index = Math.floor(Math.random() * krishnaImages.length);
+      return krishnaImages[index];
+    }
+
+    function getKrishnaWisdom() {
+      const moodInput = document.getElementById('moodInput').value.trim().toLowerCase();
+      const selectedQuote = quotes[moodInput] || quotes.default;
+      const selectedImage = getRandomImage();
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `
+        <h2>${selectedQuote}</h2>
+        <img src="${selectedImage}" alt="Lord Krishna">
+        <br>
+        <button onclick="resetPage()">Try Again</button>
+      `;
+    }
+
+    function resetPage() {
+      document.getElementById('moodInput').value = "";
+      document.getElementById('result').innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>
